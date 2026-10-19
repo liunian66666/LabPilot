@@ -1,6 +1,6 @@
 # LabPilot
 
-**[在线交互预览](https://caohaoran-ai-agent-portfolio.amuseddill34.chatgpt.site/labpilot/)** · 使用固定示例数据，不连接真实模型、邮箱或 Zotero。
+**[在线交互预览](https://liunian66666.github.io/LabPilot/)** · 使用固定示例数据，不连接真实模型、邮箱或 Zotero。
 
 
 课题组科研事务助理（个人项目原型）
