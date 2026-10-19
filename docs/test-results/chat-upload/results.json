@@ -1,0 +1,31 @@
+{
+  "results": [
+    {
+      "name": "拖入文件完成实际上传与知识库同步",
+      "passed": true
+    },
+    {
+      "name": "上传文件进入真实检索链路",
+      "passed": true
+    },
+    {
+      "name": "刷新及切换会话恢复文件卡片且不串会话",
+      "passed": true
+    },
+    {
+      "name": "选择多个文件分别入库并展示结果",
+      "passed": true
+    },
+    {
+      "name": "不支持的文件类型明确提示且不发送上传请求",
+      "passed": true
+    },
+    {
+      "name": "无可检索文字的文件显示失败且不生成成功卡片",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "embedding": "mock; actual API/database/indexing and browser UI",
+  "realEmailSent": false
+}

@@ -1,0 +1,26 @@
+{
+  "real_model": true,
+  "mail_backend": "mock",
+  "checks": [
+    {
+      "name": "纪要任务与进展入库",
+      "passed": true
+    },
+    {
+      "name": "真实模型查任务并生成有依据的周报及结构化卡片",
+      "passed": true
+    },
+    {
+      "name": "修改后拟信全文一致并进入人工审批",
+      "passed": true
+    },
+    {
+      "name": "真实进程重启恢复历史与待审批",
+      "passed": true
+    },
+    {
+      "name": "批准仅 mock 执行一次且图恢复未新建审批单",
+      "passed": true
+    }
+  ]
+}

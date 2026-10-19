@@ -1,0 +1,44 @@
+# 版本控制
+.git
+.gitignore
+
+# Python
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+.ruff_cache
+
+# 数据与运行时产物（由 volume 持久化，不进镜像）
+*.db
+*.db-shm
+*.db-wal
+logs/
+
+# 前端本地产物（镜像内重新构建）
+frontend/node_modules
+frontend/dist
+
+# 密钥与环境（compose env_file 在运行时注入）
+.env
+.env*
+.env.local
+.env.*.local
+
+# 文档 / 演示脚本 / 评测（与运行时无关）
+docs
+evals
+tests
+_*
+!app/__init__.py
+!app/zotero_server/__init__.py
+!app/zotero_server/__main__.py
+uvicorn.*.log
+.acceptance/
+backups/
+scripts/
+.github/
+*.sqlite
+*.sqlite-*
+*.md
+!README.md

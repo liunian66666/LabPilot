@@ -1,0 +1,57 @@
+[project]
+name = "labpilot"
+version = "0.1.0"
+description = "LabPilot — 课题组科研事务助理（任务可溯源 · 四维待办 · 发送前确认）"
+readme = "README.md"
+requires-python = "==3.12.*"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "sqlmodel>=0.0.24",
+    "pydantic>=2.9.0",
+    "pydantic-settings>=2.6.0",
+    "langgraph>=1.0.0",
+    "langchain-core>=0.3.0",
+    "langchain-openai>=0.3.0",
+    "httpx>=0.28.0",
+    "python-multipart>=0.0.12",
+    "python-dotenv>=1.0.0",
+    "pgvector>=0.3.6",
+    "psycopg[binary]>=3.2.0",
+    "loguru>=0.7.3",
+    "tenacity>=9.0.0",
+    "email-validator>=2.2.0",
+    "langchain-text-splitters>=1.1.2",
+    "pymupdf>=1.28.2",
+    "langgraph-checkpoint-sqlite>=3.1.1",
+    "pyjwt>=2.15.1",
+    "bcrypt>=5.0.0",
+    "mcp>=2,<3",
+    "cryptography>=43.0.0",
+    "httpx2>=2.10.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.8.0",
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+]
+
+[tool.ruff.lint]
+extend-select = ["UP", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/test.py" = ["BLE001", "TRY002"] # 手工异步上下文教学示例，不是业务模块
+
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.uv]
+package = false

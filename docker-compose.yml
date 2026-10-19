@@ -1,0 +1,43 @@
+services:
+  labpilot-init:
+    image: labpilot:latest
+    user: "0:0"
+    entrypoint: ["/app/.venv/bin/python", "-m", "app.prepare_volumes"]
+    network_mode: none
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+    cap_add: [CHOWN, DAC_OVERRIDE, FOWNER]
+    healthcheck:
+      disable: true
+    volumes:
+      - labpilot_data:/app/data
+      - labpilot_logs:/app/logs
+    restart: "no"
+
+  labpilot:
+    build: .
+    image: labpilot:latest
+    container_name: labpilot
+    depends_on:
+      labpilot-init:
+        condition: service_completed_successfully
+    ports:
+      - "127.0.0.1:${LABPILOT_PORT:-18000}:8000"
+    env_file:
+      - .env
+    environment:
+      APP_ENV: production
+      # 持久化路径（覆盖 .env 中可能存在的本地路径）
+      DATABASE_URL: sqlite:////app/data/labpilot.db
+      CHECKPOINT_DB_PATH: /app/data/labpilot_checkpoints.db
+      REMINDER_SCHEDULER_ENABLED: ${REMINDER_SCHEDULER_ENABLED:-true}
+    volumes:
+      - labpilot_data:/app/data
+      - labpilot_logs:/app/logs
+    restart: unless-stopped
+
+volumes:
+  labpilot_data:
+  labpilot_logs:

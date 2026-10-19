@@ -1,0 +1,34 @@
+[
+  {
+    "stage": "process_1_prepare_and_exit",
+    "exit_code": 0,
+    "detail": {
+      "pending": true,
+      "paused": true
+    }
+  },
+  {
+    "stage": "process_2_restore_and_resume",
+    "exit_code": 0,
+    "detail": {
+      "history_restored": true,
+      "pending_restored": true,
+      "resume": {
+        "ok": true,
+        "id": "c26e566b-1eef-415e-a450-3a59fa8159ab",
+        "status": "sent",
+        "executed": true,
+        "result": {
+          "mode": "mock",
+          "message": "email accepted by mock executor"
+        },
+        "graph_resume": "图已恢复。"
+      },
+      "approval_count": 2,
+      "statuses": [
+        "sent",
+        "pending"
+      ]
+    }
+  }
+]

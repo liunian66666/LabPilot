@@ -1,0 +1,27 @@
+{
+  "realBrowser": true,
+  "realModel": false,
+  "mailBackend": "mock",
+  "checks": [
+    {
+      "name": "真实浏览器登录并恢复服务端历史",
+      "passed": true
+    },
+    {
+      "name": "浏览器修改周报并验证数据库全文",
+      "passed": true
+    },
+    {
+      "name": "刷新后卡片不重复且修改后全文保留",
+      "passed": true
+    },
+    {
+      "name": "登出再登录恢复原会话",
+      "passed": true
+    },
+    {
+      "name": "无浏览器运行时错误",
+      "passed": true
+    }
+  ]
+}

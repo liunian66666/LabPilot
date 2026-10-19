@@ -1,0 +1,13 @@
+{"id": "date-01", "category": "date_parse", "input": "今天", "expect": {"due_date": "TODAY", "needs_confirm": false}}
+{"id": "date-02", "category": "date_parse", "input": "明天", "expect": {"due_date": "TOMORROW", "needs_confirm": false}}
+{"id": "date-03", "category": "date_parse", "input": "下周五前", "expect": {"due_date": "NEXT_FRIDAY", "needs_confirm": false}}
+{"id": "date-04", "category": "date_parse", "input": "乱七八糟", "expect": {"due_date": null, "needs_confirm": true}}
+{"id": "date-05", "category": "date_parse", "input": "2026-10-01", "expect": {"due_date": "2026-10-01", "needs_confirm": false}}
+{"id": "extract-01", "category": "task_extract", "input": "下周五前补完消融实验，结果给老师看一下。", "expect": {"min_tasks": 1, "quote_contains": "消融", "source": "advisor"}}
+{"id": "extract-02", "category": "task_extract", "input": "今天提交开题修改稿", "expect": {"min_tasks": 1, "planned_date": "TODAY"}}
+{"id": "extract-03", "category": "task_extract", "input": "天气不错", "expect": {"min_tasks": 0}}
+{"id": "report-01", "category": "report_no_fabricate", "input": {"progress": [], "todos": []}, "expect": {"body_contains": "待补充", "must_not_contain": "准确率78"}}
+{"id": "approval-01", "category": "approval_gate", "input": {"action": "reject_then_approve"}, "expect": {"reject_executed": false, "approve_executed": true}}
+{"id": "approval-02", "category": "approval_gate", "input": {"action": "bad_version"}, "expect": {"status": "payload_version_mismatch"}}
+{"id": "rag-01", "category": "rag_states", "input": {"query": "消融实验何时完成", "corpus": ["下周五前补完消融实验"]}, "expect": {"status": "ok"}}
+{"id": "rag-02", "category": "rag_states", "input": {"query": "如何申请星际旅行许可证", "corpus": ["下周五前补完消融实验"]}, "expect": {"status": "no_result"}}

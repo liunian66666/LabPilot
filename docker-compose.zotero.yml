@@ -1,0 +1,19 @@
+# 按需叠加：docker compose -f docker-compose.yml -f docker-compose.zotero.yml up -d --build
+services:
+  labpilot:
+    environment:
+      ZOTERO_MCP_URL: http://zotero-mcp:8765/mcp
+      ZOTERO_MCP_INTERNAL_TOKEN: ${ZOTERO_MCP_INTERNAL_TOKEN:?请在 .env 配置随机内部令牌}
+    depends_on:
+      zotero-mcp:
+        condition: service_started
+
+  zotero-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile.zotero-mcp
+    image: labpilot-zotero-mcp:local
+    environment:
+      ZOTERO_MCP_INTERNAL_TOKEN: ${ZOTERO_MCP_INTERNAL_TOKEN:?请在 .env 配置随机内部令牌}
+    # No host port: reachable only on the Compose network.
+    restart: unless-stopped

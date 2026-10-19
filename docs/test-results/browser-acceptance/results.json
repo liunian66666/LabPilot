@@ -1,0 +1,59 @@
+{
+  "results": [
+    {
+      "name": "清缓存后从后端恢复会话列表",
+      "passed": true
+    },
+    {
+      "name": "同一周报只显示一张卡片且隐藏内部字段",
+      "passed": true
+    },
+    {
+      "name": "查看周报完整正文",
+      "passed": true
+    },
+    {
+      "name": "修改草稿刷新后自动恢复",
+      "passed": true
+    },
+    {
+      "name": "切换会话后返回仍恢复未保存草稿",
+      "passed": true
+    },
+    {
+      "name": "保存周报写入真实后端",
+      "passed": true
+    },
+    {
+      "name": "版本冲突保留输入且不覆盖数据库",
+      "passed": true
+    },
+    {
+      "name": "重命名会话刷新后保留",
+      "passed": true
+    },
+    {
+      "name": "拒绝邮件后刷新恢复已拒绝与完整正文",
+      "passed": true
+    },
+    {
+      "name": "批准邮件仅 mock 执行且刷新恢复已发送",
+      "passed": true
+    },
+    {
+      "name": "历史消息显示日期与原始时间",
+      "passed": true
+    },
+    {
+      "name": "周报页生成并编辑及返回恢复草稿",
+      "passed": true
+    },
+    {
+      "name": "无浏览器运行异常",
+      "passed": true
+    }
+  ],
+  "browserErrors": [],
+  "realEmailSent": false,
+  "mailBackend": "mock"
+}

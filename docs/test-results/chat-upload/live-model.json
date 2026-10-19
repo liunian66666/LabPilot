@@ -1,0 +1,19 @@
+{
+  "isolated_storage": true,
+  "real_embedding": true,
+  "real_model": true,
+  "real_email_sent": false,
+  "passed": true,
+  "reply": "根据刚上传的《星舟实验记录.md》，星舟实验信息如下：\n\n- **准确率**：94.6%\n- **实验代号**：LP-946-X7\n- **截止日期**：2030-06-18\n\n以上均引自该文件（星舟实验记录.md）中的实验记录条目。",
+  "search_calls": [
+    {
+      "query": "星舟实验 准确率 实验代号 截止日期",
+      "user_id": "dev",
+      "document_id": "08a41f5b-e9a3-4181-b6fa-55048a3c3c06"
+    }
+  ],
+  "vector_retrieval_executed": true,
+  "delta_count": 25,
+  "history_persisted": true,
+  "elapsed_seconds": 9.61
+}

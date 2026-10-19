@@ -1,0 +1,11 @@
+{
+  "version": "0.1",
+  "note": "确定性规则评测；样本量见各 case，禁止把未测指标写成结论",
+  "categories": {
+    "date_parse": "相对日期解析",
+    "task_extract": "纪要抽任务",
+    "report_no_fabricate": "周报不编造",
+    "approval_gate": "邮件审批闸门",
+    "rag_states": "资料检索三态"
+  }
+}

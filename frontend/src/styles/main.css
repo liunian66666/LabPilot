@@ -1,0 +1,392 @@
+/* =====================================================
+   LabPilot 设计系统
+   风格：极简学术风 · 低饱和蓝灰 · 氛围渐变背景
+   ===================================================== */
+
+:root {
+  /* 色彩令牌（70-20-10：蓝灰主色 / 中性 / 品牌点缀） */
+  --bg: #eef1f7;
+  --bg-deep: #e4e9f2;
+  --panel: rgba(255, 255, 255, 0.86);
+  --panel-solid: #ffffff;
+  --ink: #1c2536;
+  --ink-soft: #34405a;
+  --muted: #5d6a84;
+  --line: #dfe5f0;
+  --line-strong: #cbd4e4;
+
+  --brand: #2f5fd0;
+  --brand-accent: #5b8def;
+  --brand-soft: #e9f0fd;
+  --brand-ink: #234a9e;
+
+  --ok: #1e8a5c;
+  --ok-soft: #e5f5ec;
+  --warn: #b26e05;
+  --warn-soft: #fdf3e0;
+  --danger: #bb3a30;
+  --danger-soft: #fdecea;
+
+  --radius: 14px;
+  --radius-sm: 9px;
+  --shadow: 0 1px 2px rgba(28, 37, 54, 0.05), 0 10px 28px rgba(28, 37, 54, 0.07);
+  --shadow-lift: 0 2px 4px rgba(28, 37, 54, 0.06), 0 16px 36px rgba(28, 37, 54, 0.12);
+
+  /* 字体：纯本机系统字体栈（无网络字体依赖） */
+  --font-display: 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', SFMono-Regular, Menlo, Consolas, monospace;
+
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--ink);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 氛围背景：径向光斑 + 细网格，不用纯白/纯灰平铺 */
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(52rem 30rem at 88% -8%, rgba(91, 141, 239, 0.14), transparent 62%),
+    radial-gradient(40rem 26rem at -12% 30%, rgba(47, 95, 208, 0.09), transparent 58%),
+    radial-gradient(36rem 24rem at 60% 110%, rgba(30, 138, 92, 0.05), transparent 60%),
+    linear-gradient(180deg, #f0f3f9 0%, #e9edf5 100%);
+  background-attachment: fixed;
+}
+
+/* 细网格覆盖层 */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(28, 37, 54, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 37, 54, 0.028) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(70rem 44rem at 50% 0%, rgba(0, 0, 0, 0.9), transparent 75%);
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+}
+
+::selection {
+  background: rgba(91, 141, 239, 0.28);
+}
+
+/* ---------- 表单与按钮 ---------- */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 9px 16px;
+  background: linear-gradient(180deg, #3a6cdd, var(--brand));
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  box-shadow: 0 1px 2px rgba(35, 74, 158, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  transition: transform 0.12s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  min-height: 40px;
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(35, 74, 158, 0.3);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+a:focus-visible,
+details summary:focus-visible {
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 2px;
+}
+
+button.secondary {
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+  box-shadow: inset 0 0 0 1px rgba(47, 95, 208, 0.22);
+}
+
+button.secondary:hover:not(:disabled) {
+  filter: none;
+  background: #dfe9fb;
+  box-shadow: inset 0 0 0 1px rgba(47, 95, 208, 0.35);
+}
+
+button.danger {
+  background: linear-gradient(180deg, #c8473d, var(--danger));
+  box-shadow: 0 1px 2px rgba(140, 34, 28, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #96a1b8;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 3px rgba(91, 141, 239, 0.18);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* ---------- 页面骨架 ---------- */
+.card {
+  position: relative;
+  background: var(--panel);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px 22px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.18s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lift);
+}
+
+.card > h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 0 0 14px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.card > h3::before {
+  content: '';
+  width: 4px;
+  height: 15px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--brand-accent), var(--brand));
+  flex: none;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.row > button {
+  flex: none;
+}
+
+/* ---------- 列表 ---------- */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.list-item {
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 13px 15px;
+  background: rgba(255, 255, 255, 0.72);
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+
+.list-item:hover {
+  border-color: var(--line-strong);
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.list-item .meta {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 7px;
+}
+
+/* ---------- 标签 ---------- */
+.tag {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1.6;
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+  margin-right: 6px;
+  white-space: nowrap;
+}
+
+.tag.warn {
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+
+.tag.ok {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+
+.tag.danger {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+/* ---------- 引用块（溯源出处） ---------- */
+.quote {
+  border-left: 3px solid var(--brand-accent);
+  padding: 9px 13px;
+  margin: 9px 0 2px;
+  background: linear-gradient(90deg, rgba(91, 141, 239, 0.07), rgba(91, 141, 239, 0.02));
+  border-radius: 0 8px 8px 0;
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/* ---------- 提示条 ---------- */
+.alert {
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  margin: 0 0 14px;
+  border: 1px solid transparent;
+}
+
+.alert.error {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border-color: rgba(187, 58, 48, 0.22);
+}
+
+.alert.success {
+  background: var(--ok-soft);
+  color: var(--ok);
+  border-color: rgba(30, 138, 92, 0.22);
+}
+
+.alert.info {
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+  border-color: rgba(47, 95, 208, 0.2);
+}
+
+/* ---------- 周报预览 ---------- */
+pre.report {
+  white-space: pre-wrap;
+  background: #f7f9fd;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 16px;
+  line-height: 1.7;
+  font-size: 13px;
+  margin: 0;
+}
+
+/* ---------- 表单字段 ---------- */
+.field {
+  margin-bottom: 13px;
+}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+
+/* ---------- 工具类 ---------- */
+.mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.muted-text {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+details summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 960px) {
+  .grid-2,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 16px 16px;
+  }
+}

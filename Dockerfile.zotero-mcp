@@ -1,0 +1,15 @@
+FROM python:3.12-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# This sidecar needs only MCP, an HTTP client, and an ASGI server.
+RUN pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple \
+    "mcp==2.3.0" "httpx==0.28.1" "uvicorn==0.54.0"
+
+WORKDIR /srv
+COPY app/__init__.py /srv/app/__init__.py
+COPY app/zotero_server/ /srv/app/zotero_server/
+
+EXPOSE 8765
+CMD ["python", "-m", "app.zotero_server"]

@@ -1,0 +1,97 @@
+{
+  "model": "deepseek-v4-flash-0731",
+  "mail_backend": "mock",
+  "isolated_directory": "D:\\Temp\\labpilot_final_acceptance_b6xnoglz",
+  "checks": [
+    {
+      "name": "chat_http_200",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "agent_created_report",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "report_artifact_returned",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "missing_recipient_not_invented",
+      "passed": true,
+      "detail": {
+        "pending": null,
+        "reply": "我先汇总了一下结果，给你看下现状：\n\n## 1️⃣ 消融实验相关待办\n- **补完消融实验**（重要｜无截止日期）· id `885ce1ee`\n\n## 2️⃣ 周报草稿（2026-10-05 ~ 2026-10-11）\n\n**本周进展**\n- 跑通消融两组基线；观察：测试数据准确率 78.3%，低于预期\n\n**待办完成情况**\n- 本区间内无标记完成的任务\n\n**下周计划**\n- 补完消融实验（无截止）\n\n**需协调事项**\n- 待补充\n\n⚠️ 提醒：待办\"补完消融实验\"目前没有截止日期，建议你给个截止时间，我好在周报里写清楚下周节点。\n\n## 3️⃣ 给老师的邮件——还缺一些信息\n准备邮件草稿前，我需要先确认：\n\n1. **收件人**：老师的邮箱地址是？（我可以按邮件草稿准备，不会直接发送，会先请你确认）\n2. **邮件主题和内容**：是想把上面这份周报作为正文发给老师，还是另有内容？比如汇报消融实验进展、说明准确率低于预期的观察、请示下一步方向？\n\n你把邮箱和想说的内容告诉我，我立刻起草并给你过目确认后再处理。"
+      }
+    },
+    {
+      "name": "chat_http_200",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "agent_edit_saved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "edited_report_artifact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "chat_request",
+      "passed": false,
+      "detail": "IncompleteReplyError: 本轮未生成有效回复，请重试。"
+    },
+    {
+      "name": "email_pending_approval",
+      "passed": false,
+      "detail": null
+    }
+  ],
+  "transcript": [
+    {
+      "user": "查一下消融实验相关待办，结合本周进展写周报，最后准备一封给老师的邮件。",
+      "response": {
+        "reply": "我先汇总了一下结果，给你看下现状：\n\n## 1️⃣ 消融实验相关待办\n- **补完消融实验**（重要｜无截止日期）· id `885ce1ee`\n\n## 2️⃣ 周报草稿（2026-10-05 ~ 2026-10-11）\n\n**本周进展**\n- 跑通消融两组基线；观察：测试数据准确率 78.3%，低于预期\n\n**待办完成情况**\n- 本区间内无标记完成的任务\n\n**下周计划**\n- 补完消融实验（无截止）\n\n**需协调事项**\n- 待补充\n\n⚠️ 提醒：待办\"补完消融实验\"目前没有截止日期，建议你给个截止时间，我好在周报里写清楚下周节点。\n\n## 3️⃣ 给老师的邮件——还缺一些信息\n准备邮件草稿前，我需要先确认：\n\n1. **收件人**：老师的邮箱地址是？（我可以按邮件草稿准备，不会直接发送，会先请你确认）\n2. **邮件主题和内容**：是想把上面这份周报作为正文发给老师，还是另有内容？比如汇报消融实验进展、说明准确率低于预期的观察、请示下一步方向？\n\n你把邮箱和想说的内容告诉我，我立刻起草并给你过目确认后再处理。",
+        "session_id": "final-acceptance",
+        "pending_approval_id": null,
+        "tools_used": [],
+        "artifacts": [
+          {
+            "type": "report",
+            "id": "980d5e63-5bd4-461f-bc66-0523437aef20",
+            "title": "周报草稿",
+            "status": "draft",
+            "content_hash": "",
+            "meta": {}
+          }
+        ]
+      },
+      "seconds": 18.95
+    },
+    {
+      "user": "修改刚才的周报，在问题与阻塞部分补充“结果下降，需要重新检查数据划分”。请实际保存到原草稿，保留其他内容，不创建新周报，不准备邮件。",
+      "response": {
+        "reply": "已保存到原周报草稿（`980d5e63`），其他内容保持不变，仅新增了「问题与阻塞」小节：\n\n- **问题与阻塞**：结果下降，需要重新检查数据划分\n\n按你的要求，没有创建新周报，也没有准备邮件。还有其他需要调整的吗？",
+        "session_id": "final-acceptance",
+        "pending_approval_id": null,
+        "tools_used": [],
+        "artifacts": [
+          {
+            "type": "report",
+            "id": "980d5e63-5bd4-461f-bc66-0523437aef20",
+            "title": "周报草稿",
+            "status": "edited",
+            "content_hash": "1dec81ceaef8077b",
+            "meta": {}
+          }
+        ]
+      },
+      "seconds": 8.8
+    }
+  ]
+}
