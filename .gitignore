@@ -21,3 +21,10 @@ backups/
 .acceptance/
 
 *.tsbuildinfo
+
+## Local notes and scratch scripts
+_*.py
+_*.ps1
+test_timer.py
+导学-LabPilot.md
+面经-LabPilot.md
