@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="LabPilot 科研事务助理交互预览：用示例数据体验纪要抽任务、待办、进展、周报与发送确认。">
+  <title>LabPilot · 交互预览</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#content">跳到内容</a>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="logo" href="https://caohaoran-ai-agent-portfolio.amuseddill34.chatgpt.site/"><span>L</span><strong>LabPilot</strong></a>
+      <p class="side-sub">课题组科研事务助理</p>
+      <nav aria-label="预览步骤">
+        <button class="nav-item selected" data-screen="overview"><span>◫</span> 预览导览</button>
+        <button class="nav-item" data-screen="meeting"><span>▤</span> 纪要抽任务</button>
+        <button class="nav-item" data-screen="todos"><span>☷</span> 四维待办</button>
+        <button class="nav-item" data-screen="progress"><span>▥</span> 进展记录</button>
+        <button class="nav-item" data-screen="report"><span>▣</span> 周报草稿</button>
+        <button class="nav-item" data-screen="approval"><span>↗</span> 发送确认</button>
+        <button class="nav-item" data-screen="knowledge"><span>◇</span> 资料库问答</button>
+      </nav>
+      <div class="side-bottom"><span class="dot"></span> 示例数据 · 浏览器本地预览<br><small>不连接真实模型、邮箱或 Zotero</small></div>
+    </aside>
+    <div class="main-area">
+      <div class="topbar"><div><span class="breadcrumb">LabPilot / <b id="breadcrumb">预览导览</b></span></div><div class="top-actions"><span class="sample-badge">INTERACTIVE DEMO</span><a href="https://github.com/liunian66666/LabPilot" target="_blank" rel="noopener noreferrer">GitHub 源码 ↗</a><a href="https://caohaoran-ai-agent-portfolio.amuseddill34.chatgpt.site/">返回作品集 ↗</a></div></div>
+      <main id="content">
+        <section class="screen active" id="screen-overview" aria-labelledby="overview-title">
+          <div class="hero"><div><p class="kicker">RESEARCH WORKFLOW / PREVIEW</p><h1 id="overview-title">从一句组会要求，<br><em>到一份有依据的周报。</em></h1><p>沿着真实产品设计的主线，体验 LabPilot 如何把纪要、任务与进展串联起来。这里使用固定示例数据，所有操作仅发生在这个浏览器页面中。</p><button class="primary" data-go="meeting">开始体验 <span>→</span></button></div><div class="hero-flow"><div><span>01</span><strong>纪要</strong><small>保留原话</small></div><i>→</i><div><span>02</span><strong>待办</strong><small>确认任务</small></div><i>→</i><div><span>03</span><strong>进展</strong><small>记录事实</small></div><i>→</i><div><span>04</span><strong>周报</strong><small>依据生成</small></div></div></div>
+          <div class="overview-grid"><div class="stat-card"><small>可追溯任务</small><strong>原文引用</strong><p>任务卡片展示纪要中的来源句。</p></div><div class="stat-card"><small>周报原则</small><strong>先记录，再写作</strong><p>没有进展的任务保留“待补充”。</p></div><div class="stat-card"><small>外发控制</small><strong>确认后才执行</strong><p>预览中的确认只改变本地状态。</p></div></div>
+        </section>
+
+        <section class="screen" id="screen-meeting" aria-labelledby="meeting-title"><div class="page-head"><div><p class="kicker">01 / MEETING NOTES</p><h1 id="meeting-title">纪要抽任务</h1><p>示例纪要中的任务候选保留原文依据；提取动作在此预览中使用固定结果。</p></div><span class="step-tag">第 1 步</span></div><div class="two-col"><div class="panel"><div class="panel-head"><h2>组会纪要 · 示例</h2><span class="soft-tag">虚构内容</span></div><p class="note-meta">课题组周会 · 2026 年 10 月</p><div class="document"><p>本周讨论了检索实验与论文图表。下周五前补完消融实验，并把结果整理给老师看。</p><p>小王负责核对 20 篇相关文献的年份与 DOI，完成后更新综述表。</p><p>把上周实验的失败样例整理成一页记录，说明可能原因，具体截止时间下次确认。</p></div><button class="primary" id="extract-btn">提取示例任务 <span>✳</span></button></div><div class="panel"><div class="panel-head"><h2>任务候选</h2><span id="candidate-count" class="count">未提取</span></div><div id="candidates" class="empty-state"><div>✳</div><h3>等待提取</h3><p>点击左侧按钮，查看任务、来源句与待确认字段。</p></div></div></div></section>
+
+        <section class="screen" id="screen-todos" aria-labelledby="todos-title"><div class="page-head"><div><p class="kicker">02 / TASKS</p><h1 id="todos-title">四维待办</h1><p>把来源明确的事项收进待办；不同视图帮助你分辨今天、本周、逾期与等待确认的工作。</p></div><span class="step-tag">第 2 步</span></div><div class="summary-row"><div><strong id="todo-total">0</strong><span>全部任务</span></div><div><strong id="todo-done">0</strong><span>已完成</span></div><div><strong id="todo-waiting">0</strong><span>待确认</span></div></div><div class="tabs" role="group" aria-label="待办视图"><button class="tab current" data-view="all">全部</button><button class="tab" data-view="today">今日</button><button class="tab" data-view="week">本周</button><button class="tab" data-view="overdue">逾期</button><button class="tab" data-view="waiting">待确认</button></div><div class="panel"><div id="todo-list"></div></div></section>
+
+        <section class="screen" id="screen-progress" aria-labelledby="progress-title"><div class="page-head"><div><p class="kicker">03 / PROGRESS</p><h1 id="progress-title">进展记录</h1><p>周报只依据实际记录写作。可以先完成一项任务，再补充观察结果或卡点。</p></div><span class="step-tag">第 3 步</span></div><div class="two-col"><form class="panel" id="progress-form"><div class="panel-head"><h2>新增进展</h2><span class="soft-tag">仅保存在当前页面</span></div><label for="progress-task">关联待办</label><select id="progress-task" required></select><label for="progress-text">本次完成了什么</label><textarea id="progress-text" required rows="6" placeholder="例如：完成了消融实验的首轮对比，发现去掉检索模块后召回下降；已整理图表待复核。"></textarea><button class="primary" type="submit">保存进展 <span>＋</span></button></form><div class="panel"><div class="panel-head"><h2>最近记录</h2><span id="progress-count" class="count">0 条</span></div><div id="progress-list"></div></div></div></section>
+
+        <section class="screen" id="screen-report" aria-labelledby="report-title"><div class="page-head"><div><p class="kicker">04 / WEEKLY REPORT</p><h1 id="report-title">周报草稿</h1><p>把本周有记录的进展汇总成可编辑草稿；没有事实依据的内容显示“待补充”。</p></div><span class="step-tag">第 4 步</span></div><div class="panel"><div class="panel-head"><h2>生成本周周报草稿</h2><span class="soft-tag">示例规则生成</span></div><p class="muted">此预览用本页的示例任务与进展拼装草稿，不调用语言模型。</p><button class="primary" id="generate-report">生成草稿 <span>✳</span></button></div><div class="panel report-panel" id="report-panel"><div class="panel-head"><h2>草稿内容</h2><span id="report-version" class="count">尚未生成</span></div><textarea id="report-text" rows="15" aria-label="可编辑的周报草稿" placeholder="生成后可在这里编辑周报正文。"></textarea><div class="report-footer"><div><strong>引用依据</strong><p id="report-sources" class="muted">暂无</p></div><button class="primary" id="prepare-email">准备发送确认 <span>→</span></button></div></div></section>
+
+        <section class="screen" id="screen-approval" aria-labelledby="approval-title"><div class="page-head"><div><p class="kicker">05 / HUMAN APPROVAL</p><h1 id="approval-title">发送确认</h1><p>外发内容需要人先核对。修改周报正文会使此前的确认失效。</p></div><span class="step-tag">第 5 步</span></div><div class="two-col"><div class="panel"><div class="panel-head"><h2>待确认内容</h2><span class="soft-tag">不会发送真实邮件</span></div><div id="approval-content" class="approval-content muted">请先生成周报，并点击“准备发送确认”。</div><div class="approval-actions"><button class="primary" id="approve-btn" disabled>确认示例发送 <span>✓</span></button><button class="secondary" id="reject-btn" disabled>拒绝</button></div></div><div class="panel"><div class="panel-head"><h2>当前状态</h2></div><div id="approval-status" class="status-box"><span>○</span><div><strong>尚未提交确认</strong><p>完成周报后可在这里体验审批状态流转。</p></div></div><div class="callout">预览中的“发送”只更新页面状态，不会连接 SMTP、创建真实审批单或向任何人发送邮件。</div></div></div></section>
+
+        <section class="screen" id="screen-knowledge" aria-labelledby="knowledge-title"><div class="page-head"><div><p class="kicker">BONUS / KNOWLEDGE</p><h1 id="knowledge-title">资料库问答</h1><p>通过一个固定示例，展示“回答 + 来源”的产品形态；这里不执行实时检索。</p></div><span class="step-tag">辅助能力</span></div><div class="two-col"><div class="panel"><div class="panel-head"><h2>示例问题</h2></div><button class="question" data-answer="1">消融实验的下一步是什么？ <span>→</span></button><button class="question" data-answer="2">老师是否已经确认最终图表？ <span>→</span></button></div><div class="panel"><div class="panel-head"><h2>回答与依据</h2></div><div id="knowledge-answer" class="empty-state"><div>◇</div><h3>选择一个问题</h3><p>有来源时展示对应片段；没有依据时明确说明未知。</p></div></div></div></section>
+      </main>
+      <footer class="preview-footer"><span>LabPilot 交互预览 · 示例数据，不代表已公开部署完整系统</span><button id="reset-demo">重置演示</button></footer>
+    </div>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
